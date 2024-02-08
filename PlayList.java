@@ -202,15 +202,14 @@ class PlayList {
      */
     private int minIndex(int start) {
         //// replace the following statement with your code
-        if(start < 0 || start > size-1) return -1;
-        int index = 0;
-        int min = tracks[start].getDuration();
-            for(int i = start; i < size-1; i++)
+        int index = -1;
+        if(!(start < 0 || start > size-1)) index = start;
+            for(int i = start; i < size; i++)
             {
-                if(min > tracks[i].getDuration()) min = tracks[i].getDuration();
-                index = i;
+                if(tracks[index].getDuration()>tracks[i].getDuration()){
+                    index = i;
+                }
             }
-
         return index;
     }
 
