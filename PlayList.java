@@ -120,11 +120,7 @@ class PlayList {
         //// replace the following statement with your code
         boolean ans = false;
         if ((i < 0) || (i > size) || (size == maxSize)) ans = false;
-        else {
-            if (i == 0) {
-                tracks[0] = track;
-                size++;
-            } else {
+             else {
                 for (int j = size - 1; j >= i; j--) {
                     tracks[j+1] = tracks[j];
                 }
@@ -132,7 +128,6 @@ class PlayList {
                 size = size + 1;
                 ans = true;
             }
-        }
         return ans;
     }
 
@@ -231,14 +226,13 @@ class PlayList {
      *  rather than returning a new, sorted playlist, the method sorts
      *  the list on which it was called (this list). */
     public void sortedInPlace() {
-        // Uses the selection sort algorithm,  
-        // calling the minIndex method in each iteration.
-        //// replace this statement with your code
-        Track temp = tracks[0];
-        for(int i = 0; i < size; i++){
+        Track temp;
+        int minIndex1;
+        for(int i=0 ; i<size ; i++) {
+            minIndex1 = minIndex(i);
             temp = tracks[i];
-            tracks[i] = tracks[minIndex(i)];
-            tracks[minIndex(i)] = temp;
+            tracks[i]=tracks[minIndex1];
+            tracks[minIndex1] = temp;
         }
     }
 }
